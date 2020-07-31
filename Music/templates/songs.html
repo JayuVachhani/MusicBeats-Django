@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}All Songs{% endblock %}
+{% block body %}
+
+<!-- cards -->
+    
+<div class="cards">        
+    <div class="row">
+        {% for song in songs %}            
+        <div class="card" style="width: 18rem;">                
+            <img src="/images/{{song.image}}" class="card-img-top" alt="img1">
+            <div class="card-body">
+                <h5 class="card-title">{{song.name}}</h5>
+                <p class="card-text">{{song.singer}}</p>
+                <p class="card-text">{{song.tag}}</p>
+                <a href="{% url 'playsong' song.song_id %}" class="btn btn-outline-success">Listen</a>
+            </div>
+        </div>
+        {% endfor %}            
+    </div>
+    
+</div>
+{% endblock %}

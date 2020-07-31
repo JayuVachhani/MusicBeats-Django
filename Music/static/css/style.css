@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+    .input-group- {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}   
+
+.form-group{
+  text-align: center;
+  margin-top: 2vh;
+  margin-left: 55vh;
+  background-color: white;
+  
+}
+.heading{
+  margin-left: 68vh;
+  margin-top: 18vh;
+}
+.input-field{
+  margin-top: 30px;
+}
+
+.row{
+  margin-top: 100px;
+}
+
+.cards{
+   margin-left: 35vh;
+   
+}
+.card{
+  margin-left: 50px;
+  background-color: white;
+  border-radius: 20px;
+  float: left;
+  width: 10%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);    
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+  margin-bottom: 20%; 
+}
+/* .card:hover{
+  box-shadow: 0px 20px 18px;
+  transform: scale(1.05,1.05);
+   
+} */
+@media(max-width:600px){
+    .carousel-item{        
+        float: none;
+        margin-left: 15vh;
+        width: 90%;
+    }
+
+    .cards{
+    float: none;
+    margin: 5%;
+    width: 90%;    
+    }
+    .cards:hover{
+        box-shadow: 0px 20px 18px;
+        transform: scale(1.05,1.05);
+         
+      }
+}
+.image{
+  height: 300px;
+  width: 300px;
+  margin-top: 4vh;
+  border-radius: 10px;
+  margin-bottom: 230px;
+}
+.name{
+  margin-top: 15vh;
+  font-size: larger;
+  font-weight: 700;
+  font-size: 30px;
+}

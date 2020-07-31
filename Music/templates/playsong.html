@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}Play Song{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="image" src="/images/{{songs.image}}" />
+        </div>
+        <div class="col-md-6">
+            <div class="name">
+                <h1>{{songs.name}}</h1>
+            </div>
+            <div class="singer">
+                <h4>By:{{songs.singer}}</h4>
+            </div>
+            <div class="category">
+                <h6>Category:{{songs.tag}}</h6>
+            </div>
+            <audio controls>
+                <source src="/images/{{songs.song}}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+
+
+    </div>
+</div>
+</div>
+{%endblock%}
