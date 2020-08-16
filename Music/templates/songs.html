@@ -4,21 +4,33 @@
 {% block body %}
 
 <!-- cards -->
-    
-<div class="cards">        
+{% for message in messages %}
+<p id="messages" class="alert alert-success">{{message}}</p>
+{% endfor %}
+<div class="cards">
     <div class="row">
-        {% for song in songs %}            
-        <div class="card" style="width: 18rem;">                
+        {% for song in songs %}
+
+        <div class="card" style="width: 18rem;">
             <img src="/images/{{song.image}}" class="card-img-top" alt="img1">
             <div class="card-body">
                 <h5 class="card-title">{{song.name}}</h5>
                 <p class="card-text">{{song.singer}}</p>
                 <p class="card-text">{{song.tag}}</p>
-                <a href="{% url 'playsong' song.song_id %}" class="btn btn-outline-success">Listen</a>
+                
+                <div class="row">
+                <a href="{% url 'playsong' song.song_id %}" class="btn btn-outline-success ml-4">Listen</a>
+
+                <form action="{% url 'listenlater' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="songid" value="{{song.song_id}}">
+                    <button type="submit"   class="btn btn-outline-info ml-5">Listen Later</button>
+                </form>
+                </div>
             </div>
         </div>
-        {% endfor %}            
+        {% endfor %}
     </div>
-    
+
 </div>
 {% endblock %}

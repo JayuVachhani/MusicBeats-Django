@@ -1,32 +1,32 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %}Play Song{% endblock %}
+{% block title %}Listen Later Library{% endblock %}
 {% block body %}
-<div class="container">
+<!-- <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <img class="image" src="/images/{{songs.image}}" />
+        {% for song in songs %}
+        <div class="col-md-4">
+            <img class="image" src="/images/{{song.image}}" />
         </div>
         <div class="col-md-6">
             <div class="name">
-                <h1>{{songs.name}}</h1>
+                <h1>{{song.name}}</h1>
             </div>
             <div class="singer">
-                <h4>By:{{songs.singer}}</h4>
+                <h4>By:{{song.singer}}</h4>
             </div>
             <div class="category">
-                <h6>Category:{{songs.tag}}</h6>
+                <h6>Category:{{song.tag}}</h6>
             </div>
             <audio controls>
-                <source src="/images/{{songs.song}}" type="audio/mp3">
+                <source src="/images/{{song.song}}" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio><br>
-            
-        </div>
-        
 
+        </div>
+
+        {% endfor %}
 
     </div>
-</div>
-</div>
+</div> -->
 {%endblock%}
