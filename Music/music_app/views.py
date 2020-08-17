@@ -3,6 +3,7 @@ from .models import Song,Listenlater
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from django.db.models import Case,When
 
 # Create your views here.
 def userlogin(request):
@@ -33,6 +34,9 @@ def usersignup(request):
 
 
     return render(request,'signup.html')
+def userlogout(request):
+    logout(request)
+    return redirect('login')
 
 def dashboard(request):    
     return render(request,'dashboard.html')
@@ -49,11 +53,24 @@ def playsong(request,id):
 
 def listenlater(request):
     if request.method == 'POST':
-        user = request.user
+        users = request.user
         songid = request.POST['songid']
 
-        listenlater = Listenlater(user=user,music=songid)
-        listenlater.save()
-        messages.info(request,"Song Added in Listen later")
-        return redirect('allsongs')    
+        exists = Listenlater.objects.filter(user=users)
+        for user in exists:
+            if songid == user.music:
+                messages.info(request,"Your Song Already Exists")
+                break
+        else:
+            listenlater = Listenlater(user=users,music=songid)
+            listenlater.save()
+            messages.info(request,"Song Added Successfully")
+        return redirect('allsongs')
+    # songlist = Listenlater.objects.filter(user=request.user)
+    # lislater = []
+    # for i in songlist:
+    #     lislater.append(i.music)
+    # musiclist = Song.objects.filter(song_id=lislater)
+          
+         
     return render(request,'listenlater.html')

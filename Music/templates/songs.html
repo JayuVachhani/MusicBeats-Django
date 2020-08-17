@@ -5,7 +5,13 @@
 
 <!-- cards -->
 {% for message in messages %}
-<p id="messages" class="alert alert-success">{{message}}</p>
+<script>Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: '{{message}}',
+    showConfirmButton: false,
+    timer: 2000
+  })</script>
 {% endfor %}
 <div class="cards">
     <div class="row">
@@ -33,4 +39,5 @@
     </div>
 
 </div>
+
 {% endblock %}
