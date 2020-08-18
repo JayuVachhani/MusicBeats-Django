@@ -66,11 +66,16 @@ def listenlater(request):
             listenlater.save()
             messages.info(request,"Song Added Successfully")
         return redirect('allsongs')
-    # songlist = Listenlater.objects.filter(user=request.user)
-    # lislater = []
-    # for i in songlist:
-    #     lislater.append(i.music)
-    # musiclist = Song.objects.filter(song_id=lislater)
-          
-         
-    return render(request,'listenlater.html')
+    userlist = Listenlater.objects.filter(user=request.user)     
+    lislater = []
+    for i in userlist:
+        lislater.append(i.music)    
+    musiclist = []
+    for j in lislater:        
+        music = Song.objects.filter(song_id=j)
+        musiclist.append(music)       
+       
+    return render(request,'Listenlater.html',{'musiclist':musiclist})
+
+
+

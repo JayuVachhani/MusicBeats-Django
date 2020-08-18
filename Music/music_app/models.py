@@ -18,7 +18,7 @@ class Listenlater(models.Model):
     listen_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     music = models.CharField(null=True,max_length=100)
-
+    # songdetails = models.ForeignKey(Song,on_delete = models.CASCADE,default = '')
     def __str__(self):
         return self.user.username
 
