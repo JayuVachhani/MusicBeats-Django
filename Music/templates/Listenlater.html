@@ -2,12 +2,16 @@
 {% load static %}
 {% block title %}Listen Later Library{% endblock %}
 {% block body %}
-<h1>Listen Later</h1>
+<h1 class="text-center">Listen Later</h1>
+{% if musiclist|length < 1 %}
+<h3 class="text-center mt-5 ">You Don't have any Listen Later list</h3>
+{% endif %}
+
 <div class="container">
     <div class="row">
         {% for song in musiclist %}
         <div class="col-md-4">
-            <img class="image" src="/images/{{song.image}}" />
+            <img class="images" src="/images/{{song.image}}" />
         </div>
         <div class="col-md-6">
             <div class="name">
@@ -29,5 +33,10 @@
         {% endfor %}
 
     </div>
+</div>
+
+
+
+</div>
 </div>
 {%endblock%}

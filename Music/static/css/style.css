@@ -80,6 +80,13 @@
   border-radius: 10px;
   margin-bottom: 200px;
 }
+.images{
+  height: 300px;
+  width: 300px;
+  margin-top: 4vh;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
 .name{
   margin-top: 15vh;
   font-size: larger;

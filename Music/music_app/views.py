@@ -43,6 +43,7 @@ def dashboard(request):
 
 def songs(request):
     songs = Song.objects.all()
+    
     context = {'songs':songs}
     return render(request,'songs.html',context)
 
@@ -72,8 +73,8 @@ def listenlater(request):
         lislater.append(i.music)    
     musiclist = []
     for j in lislater:        
-        music = Song.objects.filter(song_id=j)
-        musiclist.append(music)       
+        music = Song.objects.get(song_id=j)       
+        musiclist.append(music)    
        
     return render(request,'Listenlater.html',{'musiclist':musiclist})
 
