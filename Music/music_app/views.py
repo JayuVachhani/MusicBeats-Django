@@ -3,16 +3,16 @@ from .models import Song,Listenlater
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from django.db.models import Case,When
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('password')
-        
+        password = request.POST.get('password')        
         user = authenticate(request,username = username,password = password)
         if user is not None:
+
             login(request,user)
             return redirect('dashboard')
         else:
@@ -38,20 +38,27 @@ def userlogout(request):
     logout(request)
     return redirect('login')
 
-def dashboard(request):    
+@login_required(login_url='login')
+def dashboard(request):
+    # if not request.user.is_authenticated:
+    #     return redirect('login')    
     return render(request,'dashboard.html')
 
+@login_required(login_url='login')
 def songs(request):
-    songs = Song.objects.all()
-    
+    # if not request.user.is_authenticated:
+    #     return redirect('login')
+    songs = Song.objects.all()    
     context = {'songs':songs}
     return render(request,'songs.html',context)
 
+@login_required(login_url='login')
 def playsong(request,id):
     songs = Song.objects.filter(song_id=id).first()
     context = {'songs':songs}
     return render(request,'playsong.html',context)
 
+@login_required(login_url='login')
 def listenlater(request):
     if request.method == 'POST':
         users = request.user
@@ -77,6 +84,19 @@ def listenlater(request):
         musiclist.append(music)    
        
     return render(request,'Listenlater.html',{'musiclist':musiclist})
+
+# def dellislater(request):
+#     if request.method == 'POST':
+#         id = request.POST['id']
+#         userlist = Listenlater.objects.filter(user=request.user)     
+#         lislater = []
+#         for i in userlist:
+#             lislater.append(i.music)    
+#         musiclist = []
+#         for j in lislater:        
+#             music = Song.objects.get(song_id=id) 
+#             music.delete()
+#     return render(request,'Listenlater.html')
 
 
 
