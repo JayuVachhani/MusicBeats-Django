@@ -27,23 +27,8 @@
                 <source src="/images/{{song.song}}" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio><br>
-            
-            <form action="{% url 'removesong'  %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name = 'id' value="song.song_id">
-            <button type="submit" class="btn btn-danger">Remove from List</button>
-            </form> 
-            
         </div>
-        
-
         {% endfor %}
-
     </div>
-</div>
-
-
-
-</div>
 </div>
 {%endblock%}

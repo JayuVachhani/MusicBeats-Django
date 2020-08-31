@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -13,28 +14,33 @@
     <title>User Login</title>
 </head>
 
-<body>
+<body class="img" background="{% static 'images/bg.jpg' %}">
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                {% for message in messages %}
-                <p id="messages" class="alert alert-danger">{{message}}</p>
-                {% endfor %}
-                <form method="POST" action="{% url 'login' %}">
+            <div class="col-md-8">
+
+                <form method="POST" class='loginform' action="{% url 'login' %}">
+                    {% for message in messages %}
+                    <p id="messages" class="alert alert-danger">{{message}}</p>
+                    {% endfor %}
+
                     {% csrf_token %}
+                    <div class="heading">
+                        Login
+                    </div>
                     <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username">
+
+                        <input type="text" placeholder="Username" class="form-control" name="username">
 
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password">
+
+                        <input type="password" placeholder="Password" class="form-control" name="password">
                     </div>
 
                     <input type="submit" class="btn btn-primary" value='Login'><br>
-                    <small>Don't have an Account?<a href="{% url 'signup' %}">Signup Here</a></small>
+                    <div class="navigate">Don't have an Account?<a href="{% url 'signup' %}">Signup Here</a></div>
                 </form>
             </div>
 

@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -13,34 +14,40 @@
     <title>User Signup</title>
 </head>
 
-<body>
+<body class="img" background="{% static 'images/bg.jpg' %}">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <form method="POST" action="{% url 'signup' %}">
+            <div class="col-md-8">
+                <form method="POST" class="loginform" action="{% url 'signup' %}">
+                    {% for message in messages %}
+                    <p id="messages" class="alert alert-danger">{{message}}</p>
+                    {% endfor %}                    
+                    <div class="heading">
+                        SignUp
+                    </div>                    
                     {% csrf_token %}
                     <div class="form-group">
-                        <label>Email address</label>
-                        <input type="email" class="form-control" name="email">
+
+                        <input type="email" placeholder="Email" class="form-control" name="email">
 
                     </div>
                     <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username">
+
+                        <input type="text" placeholder="Username" class="form-control" name="username">
 
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="pass1">
+
+                        <input type="password" placeholder="Password" class="form-control" name="pass1">
 
                     </div>
                     <div class="form-group">
-                        <label>Confirm Password</label>
-                        <input type="password" class="form-control" name="pass2">
+
+                        <input type="password" placeholder="Confirm Password" class="form-control" name="pass2">
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="SignUp"><br>
-                    <small>Already have an Account?<a href="{% url 'login' %}">Login Here</a></small>
+                    <div class="navigate">Already have an Account?<a href="{% url 'login' %}">Login Here</a></div>
                 </form>
             </div>
         </div>

@@ -5,3 +5,4 @@ from .models import Song,Listenlater
 # we need to register first
 admin.site.register(Song)
 admin.site.register(Listenlater)
+

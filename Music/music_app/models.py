@@ -22,3 +22,7 @@ class Listenlater(models.Model):
     def __str__(self):
         return self.user.username
 
+# class Channel(models.Model):    
+#     chid = models.AutoField(primary_key=True)
+#     ch_name = models.CharField(null=True,max_length=100)
+#     ch_music = models.CharField(null=True,max_length=100)

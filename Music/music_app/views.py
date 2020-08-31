@@ -77,26 +77,16 @@ def listenlater(request):
     userlist = Listenlater.objects.filter(user=request.user)     
     lislater = []
     for i in userlist:
-        lislater.append(i.music)    
+        lislater.append(i.music)   
+
     musiclist = []
-    for j in lislater:        
-        music = Song.objects.get(song_id=j)       
-        musiclist.append(music)    
-       
+    for j in lislater:              
+        music = Song.objects.get(song_id=j)              
+        musiclist.append(music)        
+        # return render(request,'Listenlater.html',{'musiclist':musiclist})
     return render(request,'Listenlater.html',{'musiclist':musiclist})
 
-# def dellislater(request):
-#     if request.method == 'POST':
-#         id = request.POST['id']
-#         userlist = Listenlater.objects.filter(user=request.user)     
-#         lislater = []
-#         for i in userlist:
-#             lislater.append(i.music)    
-#         musiclist = []
-#         for j in lislater:        
-#             music = Song.objects.get(song_id=id) 
-#             music.delete()
-#     return render(request,'Listenlater.html')
+
 
 
 
