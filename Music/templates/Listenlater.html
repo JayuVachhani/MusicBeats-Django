@@ -1,34 +1,32 @@
-{% extends 'layout.html' %}
-{% load static %}
-{% block title %}Listen Later Library{% endblock %}
-{% block body %}
+{% extends 'layout.html' %} {% load static %} {% block title %}Listen Later
+Library{% endblock %} {% block body %}
 <h1 class="text-center">Listen Later</h1>
 {% if musiclist|length < 1 %}
-<h3 class="text-center mt-5 ">You Don't have any Listen Later list</h3>
+<h3 class="text-center mt-5">You Don't have any Listen Later list</h3>
 {% endif %}
 
 <div class="container">
-    <div class="row">
-        {% for song in musiclist %}
-        <div class="col-md-4">
-            <img class="images" src="/images/{{song.image}}" />
-        </div>
-        <div class="col-md-6">
-            <div class="name">
-                <h1>{{song.name}}</h1>
-            </div>
-            <div class="singer">
-                <h4>By:{{song.singer}}</h4>
-            </div>
-            <div class="category">
-                <h6>Category:{{song.tag}}</h6>
-            </div>
-            <audio controls>
-                <source src="/images/{{song.song}}" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio><br>
-        </div>
-        {% endfor %}
+  <div class="row">
+    {% for song in musiclist %}
+    <div class="col-md-4">
+      <img class="images" src="/images/{{song.image}}" />
     </div>
+    <div class="col-md-6">
+      <div class="name">
+        <h1>{{song.name}}</h1>
+      </div>
+      <div class="singer">
+        <h4>By:{{song.singer}}</h4>
+      </div>
+      <div class="category">
+        <h6>Category:{{song.tag}}</h6>
+      </div>
+      <audio controls>
+        <source src="/images/{{song.song}}" type="audio/mp3" />
+        Your browser does not support the audio element.</audio
+      ><br />
+    </div>
+    {% endfor %}
+  </div>
 </div>
 {%endblock%}
