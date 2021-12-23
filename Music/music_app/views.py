@@ -67,7 +67,7 @@ def listenlater(request):
         exists = Listenlater.objects.filter(user=users)
         for user in exists:
             if songid == user.music:
-                messages.info(request,"Your Song Already Exists")
+                messages.info(request,"Your Song Already Exists in list")
                 break
         else:
             listenlater = Listenlater(user=users,music=songid)
